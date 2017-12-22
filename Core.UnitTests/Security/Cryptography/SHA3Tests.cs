@@ -15,7 +15,7 @@
         {
             // Arrange
             string actual;
-            SHA3 algorithm = SHA3.Create224();
+            SHA3 algorithm = SHA3.CreateKeccak224();
 
             // Act
             actual = ComputeHash(algorithm, message);
@@ -30,7 +30,7 @@
         {
             // Arrange
             string actual;
-            SHA3 algorithm = SHA3.Create224();
+            SHA3 algorithm = SHA3.CreateKeccak224();
 
             // Act
             actual = ComputeHash(algorithm, string.Concat(Enumerable.Repeat(sequenceString, sequenceLength)));
@@ -48,7 +48,7 @@
         {
             // Arrange
             string actual;
-            SHA3 algorithm = SHA3.Create256();
+            SHA3 algorithm = SHA3.CreateKeccak256();
 
             // Act
             actual = ComputeHash(algorithm, message);
@@ -63,7 +63,7 @@
         {
             // Arrange
             string actual;
-            SHA3 algorithm = SHA3.Create256();
+            SHA3 algorithm = SHA3.CreateKeccak256();
 
             // Act
             actual = ComputeHash(algorithm, string.Concat(Enumerable.Repeat(sequenceString, sequenceLength)));
@@ -81,7 +81,7 @@
         {
             // Arrange
             string actual;
-            SHA3 algorithm = SHA3.Create384();
+            SHA3 algorithm = SHA3.CreateKeccak384();
 
             // Act
             actual = ComputeHash(algorithm, message);
@@ -96,7 +96,7 @@
         {
             // Arrange
             string actual;
-            SHA3 algorithm = SHA3.Create384();
+            SHA3 algorithm = SHA3.CreateKeccak384();
 
             // Act
             actual = ComputeHash(algorithm, string.Concat(Enumerable.Repeat(sequenceString, sequenceLength)));
@@ -114,7 +114,7 @@
         {
             // Arrange
             string actual;
-            SHA3 algorithm = SHA3.Create512();
+            SHA3 algorithm = SHA3.CreateKeccak512();
 
             // Act
             actual = ComputeHash(algorithm, message);
@@ -129,7 +129,7 @@
         {
             // Arrange
             string actual;
-            SHA3 algorithm = SHA3.Create512();
+            SHA3 algorithm = SHA3.CreateKeccak512();
 
             // Act
             actual = ComputeHash(algorithm, string.Concat(Enumerable.Repeat(sequenceString, sequenceLength)));
