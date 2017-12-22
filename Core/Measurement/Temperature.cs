@@ -12,7 +12,7 @@
         /// <summary>
         /// Represents an empty <see cref="Temperature"/> value. The default value is absolute zero, or 0°K.
         /// </summary>
-        public static readonly Temperature Empty = default(Temperature);
+        public static readonly Temperature Empty = default;
 
         /// <summary>
         /// The underlying temperature value.
@@ -20,17 +20,17 @@
         private double value;
 
         /// <summary>
-        /// Gets the temperature in celsius.
+        /// Gets the temperature in Celsius.
         /// </summary>
         public double Celsius => value - 273.15;
 
         /// <summary>
-        /// Gets the temperature in delisle.
+        /// Gets the temperature in Delisle.
         /// </summary>
         public double Delisle => (373.15F - value) * 1.50;
 
         /// <summary>
-        /// Gets the temperature in fahrenheit.
+        /// Gets the temperature in Fahrenheit.
         /// </summary>
         public double Fahrenheit => (value * 1.80) - 459.67;
 
@@ -45,12 +45,12 @@
         public double Newton => (value - 273.15) * 33.00 / 100.00;
 
         /// <summary>
-        /// Gets the temperature in reaumur.
+        /// Gets the temperature in Reaumur.
         /// </summary>
         public double Reaumur => (value - 273.15) * 0.80;
 
         /// <summary>
-        /// Gets the temperature in rankine.
+        /// Gets the temperature in Rankine.
         /// </summary>
         public double Rankine => value * 1.8;
 

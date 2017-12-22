@@ -3,13 +3,29 @@
     using System;
     using System.Runtime.CompilerServices;
 
+    /// <summary>
+    /// Represents a managed implementation of the Keccak sponge function and permutation.
+    /// </summary>
     internal sealed class KeccakSpongeManaged
     {
+        /// <summary>
+        /// The delimiter used for Keccak hash implementations.
+        /// </summary>
         public const int KeccakDelimiter = 0x06;
+
+        /// <summary>
+        /// The delimiter used for Shake hash implementations.
+        /// </summary>
         public const int ShakeDelimiter = 0x1f;
 
+        /// <summary>
+        /// The number of Keccak rounds.
+        /// </summary>
         private const int KeccakRounds = 24;
 
+        /// <summary>
+        /// The Iota permutation round constants.
+        /// </summary>
         private readonly ulong[] IotaRoundConstants = new ulong[]
         {
             0x0000000000000001, 0x0000000000008082, 0x800000000000808A, 0x8000000080008000,
@@ -20,17 +36,58 @@
             0x8000000080008081, 0x8000000000008080, 0x0000000080000001, 0x8000000080008008
         };
 
+        /// <summary>
+        /// The rate in bytes of the sponge state.
+        /// </summary>
         private readonly int rateBytes;
+
+        /// <summary>
+        /// The capacity in bytes of the sponge state.
+        /// </summary>
         private readonly int capacityBytes;
+
+        /// <summary>
+        /// The state delimiter.
+        /// </summary>
         private readonly int delimiter;
+
+        /// <summary>
+        /// The output length of the hash.
+        /// </summary>
         private readonly int outputLength;
 
+        /// <summary>
+        /// The state block size.
+        /// </summary>
         private int blockSize;
+
+        /// <summary>
+        /// The state input pointer.
+        /// </summary>
         private int inputPointer;
+
+        /// <summary>
+        /// The state output pointer.
+        /// </summary>
         private int outputPointer;
+
+        /// <summary>
+        /// The state.
+        /// </summary>
         private ulong[] state;
+
+        /// <summary>
+        /// The hash result.
+        /// </summary>
         private byte[] result;
 
+        /// <summary>
+        /// Creates a new instance of the <see cref="KeccakSpongeManaged"/> class.
+        /// </summary>
+        /// <param name="rateBytes">The rate in bytes of the sponge state.</param>
+        /// <param name="capacityBytes">The capacity in bytes of the sponge state.</param>
+        /// <param name="delimiter">The state delimiter.</param>
+        /// <param name="outputLength">The output length of the hash.</param>
         public KeccakSpongeManaged(int rateBytes, int capacityBytes, int delimiter, int outputLength)
         {
             this.rateBytes = rateBytes;
@@ -39,6 +96,9 @@
             this.outputLength = outputLength;
         }
 
+        /// <summary>
+        /// Initializes the sponge state.
+        /// </summary>
         public void Initialize()
         {
             blockSize = default;
@@ -48,6 +108,12 @@
             result = new byte[outputLength];
         }
 
+        /// <summary>
+        /// Absorbs data into the sponge state.
+        /// </summary>
+        /// <param name="array">The array of bytes to absorb.</param>
+        /// <param name="start">The start index within the byte array.</param>
+        /// <param name="size">The block size, or length of bytes to absorb.</param>
         public void Absorb(byte[] array, int start, int size)
         {
             ulong[] temp = new ulong[rateBytes / sizeof(ulong)];
@@ -73,6 +139,10 @@
             }
         }
 
+        /// <summary>
+        /// Squeezes the hash out of the sponge state.
+        /// </summary>
+        /// <returns>A hash of the input data.</returns>
         public byte[] Squeeze()
         {
             byte pad = Convert.ToByte(Buffer.GetByte(state, blockSize) ^ delimiter);
@@ -105,6 +175,10 @@
             return result;
         }
 
+        /// <summary>
+        /// Performs the Keccak permutation.
+        /// </summary>
+        /// <param name="state">The state upon which to perform the permutation.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void Permute(ulong[] state)
         {
@@ -213,6 +287,12 @@
             }
         }
 
+        /// <summary>
+        /// Rotates a 64-bit integer left.
+        /// </summary>
+        /// <param name="x">The 64-bit integer to rotate.</param>
+        /// <param name="y">The value to rotate by.</param>
+        /// <returns>A logically rotated 64-bit integer.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private ulong Rotl64(ulong x, byte y) => (x << y) | (x >> (64 - y));
     }

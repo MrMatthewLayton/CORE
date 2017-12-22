@@ -12,7 +12,7 @@
         /// <summary>
         /// Represents an empty <see cref="Distance"/> value.
         /// </summary>
-        public static readonly Distance Empty = default(Distance);
+        public static readonly Distance Empty = default;
 
         /// <summary>
         /// The underlying distance value.

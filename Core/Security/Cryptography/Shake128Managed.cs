@@ -1,28 +1,50 @@
 ﻿namespace Core.Security.Cryptography
 {
+    /// <summary>
+    /// Computes the SHA3 Shake 128 hash for the input data using the managed library.
+    /// </summary>
     public sealed class Shake128Managed : SHA3
     {
-        private readonly KeccakSpongeManaged state;
+        /// <summary>
+        /// The Keccak sponge instance.
+        /// </summary>
+        private readonly KeccakSpongeManaged sponge;
 
+        /// <summary>
+        /// Creates a new instance of the <see cref="Shake128Managed"/> class.
+        /// </summary>
         public Shake128Managed(int outputLength)
         {
-            state = new KeccakSpongeManaged(168, 32, KeccakSpongeManaged.ShakeDelimiter, outputLength);
+            sponge = new KeccakSpongeManaged(168, 32, KeccakSpongeManaged.ShakeDelimiter, outputLength);
         }
 
+        /// <summary>
+        /// Initializes an implementation of the <see cref="Shake128Managed"/> class.
+        /// </summary>
         public override void Initialize()
         {
-            state.Initialize();
+            sponge.Initialize();
         }
 
+        /// <summary>
+        /// Routes data written to the object into the hash algorithm for computing the hash.
+        /// </summary>
+        /// <param name="array">The input to compute the hash code for.</param>
+        /// <param name="ibStart">The offset into the byte array from which to begin using data.</param>
+        /// <param name="cbSize">The number of bytes in the byte array to use as data.</param>
         protected override void HashCore(byte[] array, int ibStart, int cbSize)
         {
             Initialize();
-            state.Absorb(array, ibStart, cbSize);
+            sponge.Absorb(array, ibStart, cbSize);
         }
 
+        /// <summary>
+        /// Finalizes the hash computation after the last data is processed by the cryptographic stream object.
+        /// </summary>
+        /// <returns>The computed hash code.</returns>
         protected override byte[] HashFinal()
         {
-            return state.Squeeze();
+            return sponge.Squeeze();
         }
     }
 }

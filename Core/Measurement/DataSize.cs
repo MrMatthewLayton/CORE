@@ -12,7 +12,7 @@
         /// <summary>
         /// Represents an empty <see cref="DataSize"/> value.
         /// </summary>
-        public static readonly DataSize Empty = default(DataSize);
+        public static readonly DataSize Empty = default;
 
         /// <summary>
         /// The underlying data size value.

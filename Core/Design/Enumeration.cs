@@ -115,7 +115,7 @@
         /// <returns>The value of the given enumeration.</returns>
         public static int GetValue<TEnum>(string name) where TEnum : Enumeration
         {
-            return GetMembers<TEnum>().SingleOrDefault(enumeration => enumeration.name == name)?.value ?? default(int);
+            return GetMembers<TEnum>().SingleOrDefault(enumeration => enumeration.name == name)?.value ?? default;
         }
 
         /// <summary>
