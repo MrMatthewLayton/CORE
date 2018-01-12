@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>A modern, general purpose library for .NET</Description>
+    <Copyright>© 2018 series0ne</Copyright>
+    <PackageLicenseUrl>https://github.com/series0ne/CORE/blob/master/LICENSE.md</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/series0ne/CORE</PackageProjectUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
