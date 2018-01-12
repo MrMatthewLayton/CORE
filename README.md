@@ -1,4 +1,4 @@
-# CORE
+<img src="https://raw.githubusercontent.com/series0ne/CORE/master/Icon/Icon_With_Text.png" height="64" alt="CORE" />
 
 ### A modern, general purpose library for .NET
 
