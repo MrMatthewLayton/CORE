@@ -6,6 +6,10 @@
     <Copyright>© 2018 series0ne</Copyright>
     <PackageLicenseUrl>https://github.com/series0ne/CORE/blob/master/LICENSE.md</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/series0ne/CORE</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/series0ne/CORE/master/Icon/Icon_256.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/series0ne/CORE</RepositoryUrl>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
