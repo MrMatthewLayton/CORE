@@ -10,9 +10,9 @@
     public struct DataSize : IEquatable<DataSize>
     {
         /// <summary>
-        /// Represents an empty <see cref="DataSize"/> value.
+        /// Represents a zero (0) <see cref="DataSize"/> value.
         /// </summary>
-        public static readonly DataSize Empty = default;
+        public static readonly DataSize Zero = default;
 
         /// <summary>
         /// The underlying data size value.

@@ -10,9 +10,9 @@
     public struct Distance : IEquatable<Distance>
     {
         /// <summary>
-        /// Represents an empty <see cref="Distance"/> value.
+        /// Represents a zero (0) <see cref="Distance"/> value.
         /// </summary>
-        public static readonly Distance Empty = default;
+        public static readonly Distance Zero = default;
 
         /// <summary>
         /// The underlying distance value.

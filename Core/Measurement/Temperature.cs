@@ -10,9 +10,9 @@
     public struct Temperature : IEquatable<Temperature>
     {
         /// <summary>
-        /// Represents an empty <see cref="Temperature"/> value. The default value is absolute zero, or 0°K.
+        /// Represents an absolute zero (0°K) <see cref="Temperature"/> value.
         /// </summary>
-        public static readonly Temperature Empty = default;
+        public static readonly Temperature AbsoluteZero = default;
 
         /// <summary>
         /// The underlying temperature value.
