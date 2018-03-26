@@ -37,7 +37,7 @@
         public static int GetHashCode(params object[] args)
         {
             return (instance ?? (instance = new HashCode()))
-                .ComputeHash(args.Select(arg => arg.GetHashCode()).ToArray());
+                .ComputeHash(args.Select(arg => arg?.GetHashCode() ?? default).ToArray());
         }
 
         /// <summary>

@@ -204,12 +204,12 @@
         {
             Enumeration enumeration = obj as Enumeration;
 
-            if (ReferenceEquals(obj, null))
+            if (obj is null)
             {
                 return 1;
             }
 
-            if (ReferenceEquals(enumeration, null))
+            if (enumeration is null)
             {
                 throw new ArgumentException($"Object is not of type {nameof(Enumeration)}");
             }
@@ -240,7 +240,7 @@
         /// <returns>true if the object is equal to this instance; otherwise, false.</returns>
         public override bool Equals(object obj)
         {
-            return !ReferenceEquals(obj, null)
+            return !(obj is null)
                && obj is Enumeration
                && Equals(obj as Enumeration);
         }
@@ -252,7 +252,7 @@
         /// <returns>true if the object is equal to this instance; otherwise, false.</returns>
         public bool Equals(Enumeration other)
         {
-            return !ReferenceEquals(other, null)
+            return !(other is null)
                 && value == other.value
                 && name == other.name;
         }

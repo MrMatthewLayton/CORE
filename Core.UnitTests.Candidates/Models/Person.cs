@@ -17,7 +17,7 @@
 
         public bool Equals(Person other)
         {
-            return !ReferenceEquals(other, null)
+            return !(other is null)
                 && FirstName == other.FirstName
                 && LastName == other.LastName
                 && Birthday == other.Birthday;
@@ -25,7 +25,7 @@
 
         public override bool Equals(object obj)
         {
-            return !ReferenceEquals(obj, null)
+            return !(obj is null)
                 && obj is Person
                 && Equals(obj as Person);
         }
