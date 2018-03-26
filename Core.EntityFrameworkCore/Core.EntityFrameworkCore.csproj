@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <PackageId>SeriesOne.CORE.EntityFrameworkCore</PackageId>
+    <Description>Entity Framework Core extensions for the CORE library.</Description>
+    <Copyright>© 2018 series0ne</Copyright>
+    <PackageLicenseUrl>https://github.com/series0ne/CORE/blob/master/LICENSE.md</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/series0ne/CORE</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/series0ne/CORE/master/Icon/Icon_256.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/series0ne/CORE</RepositoryUrl>
+    <Product>CORE</Product>
+    <Authors>Matthew Layton</Authors>
+    <Company>series0ne</Company>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <LangVersion>latest</LangVersion>
+    <DocumentationFile>bin\Debug\netcoreapp2.0\Core.EntityFrameworkCore.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj" />
+  </ItemGroup>
+
+</Project>

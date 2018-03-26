@@ -9,11 +9,11 @@
     public abstract class LoadingConfiguration<TModel> where TModel : class
     {
         /// <summary>
-        /// Provides the eager loading logic for the model.
+        /// Configures the eager loading logic for the model.
         /// </summary>
         /// <param name="queryable">The model upon which to perform eager loading.</param>
         /// <returns>The model with the eager loading configuration applied.</returns>
-        public virtual IQueryable<TModel> Include(IQueryable<TModel> queryable)
+        public virtual IQueryable<TModel> Configure(IQueryable<TModel> queryable)
         {
             return queryable;
         }

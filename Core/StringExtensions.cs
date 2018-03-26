@@ -4,7 +4,7 @@
     using System.Text;
 
     /// <summary>
-    /// Represents <see cref="string"/> extension methods defined by the Core library.
+    /// Represents <see cref="string"/> extension methods defined by the CORE library.
     /// </summary>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public static class StringExtensions
