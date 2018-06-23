@@ -13,10 +13,7 @@
         /// <summary>
         /// Initializes an implementation of the <see cref="Keccak256Managed"/> class.
         /// </summary>
-        public override void Initialize()
-        {
-            sponge.Initialize();
-        }
+        public override void Initialize() => sponge.Initialize();
 
         /// <summary>
         /// Routes data written to the object into the hash algorithm for computing the hash.
@@ -34,9 +31,6 @@
         /// Finalizes the hash computation after the last data is processed by the cryptographic stream object.
         /// </summary>
         /// <returns>The computed hash code.</returns>
-        protected override byte[] HashFinal()
-        {
-            return sponge.Squeeze();
-        }
+        protected override byte[] HashFinal() => sponge.Squeeze();
     }
 }

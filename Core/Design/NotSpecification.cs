@@ -19,10 +19,7 @@
         /// Initializes a new instance of the <see cref="NotSpecification{T}"/> class.
         /// </summary>
         /// <param name="specification">The specification to negate.</param>
-        public NotSpecification(Specification<T> specification)
-        {
-            expression = specification.ToExpression();
-        }
+        public NotSpecification(Specification<T> specification) => expression = specification.ToExpression();
 
         /// <summary>
         /// Provides an expression for the specification.

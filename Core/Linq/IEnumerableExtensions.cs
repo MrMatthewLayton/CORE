@@ -30,9 +30,6 @@
         /// <typeparam name="T">The underlying type of the <see cref="IEnumerable{T}"/>.</typeparam>
         /// <param name="enumerable">The <see cref="IEnumerable{T}"/> collection.</param>
         /// <returns>A new instance of <see cref="LinkedList{T}"/> containing the values of the <see cref="IEnumerable{T}"/>.</returns>
-        public static LinkedList<T> ToLinkedList<T>(this IEnumerable<T> enumerable)
-        {
-            return new LinkedList<T>(enumerable);
-        }
+        public static LinkedList<T> ToLinkedList<T>(this IEnumerable<T> enumerable) => new LinkedList<T>(enumerable);
     }
 }

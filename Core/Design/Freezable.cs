@@ -12,11 +12,6 @@
         private T value;
 
         /// <summary>
-        /// Determines whether the value is frozen.
-        /// </summary>
-        private bool isFrozen;
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="Freezable{T}"/> class.
         /// </summary>
         public Freezable()
@@ -27,10 +22,7 @@
         /// Initializes a new instance of the <see cref="Freezable{T}"/> class.
         /// </summary>
         /// <param name="value">An initialization value.</param>
-        public Freezable(T value)
-        {
-            this.value = value;
-        }
+        public Freezable(T value) => this.value = value;
 
         /// <summary>
         /// Gets or sets the freezable value.
@@ -44,7 +36,7 @@
 
             set
             {
-                if (!isFrozen)
+                if (!IsFrozen)
                 {
                     this.value = value;
                 }
@@ -54,14 +46,11 @@
         /// <summary>
         /// Gets a value to determine whether the object is frozen.
         /// </summary>
-        public bool IsFrozen => isFrozen;
+        public bool IsFrozen { get; private set; }
 
         /// <summary>
         /// Freezes the object's value.
         /// </summary>
-        public void Freeze()
-        {
-            isFrozen = true;
-        }
+        public void Freeze() => IsFrozen = true;
     }
 }

@@ -8,18 +8,8 @@
     /// <summary>
     /// Represents a base class for implementing the strongly typed enumeration pattern.
     /// </summary>
-    public abstract class Enumeration : IComparable, IComparable<Enumeration>, IEquatable<Enumeration>
+    public abstract class Enumeration : IEquatable<Enumeration>
     {
-        /// <summary>
-        /// The enumeration value.
-        /// </summary>
-        private readonly int value;
-
-        /// <summary>
-        /// The enumeration name.
-        /// </summary>
-        private readonly string name;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="Enumeration"/> class.
         /// </summary>
@@ -27,19 +17,19 @@
         /// <param name="name">The  enumeration name.</param>
         protected Enumeration(int value, string name)
         {
-            this.value = value;
-            this.name = name;
+            Value = value;
+            Name = name;
         }
 
         /// <summary>
         /// Gets or sets the value of the enumeration.
         /// </summary>
-        public int Value => value;
+        public int Value { get; }
 
         /// <summary>
         /// Gets or sets the name of the enumeration.
         /// </summary>
-        public string Name => name;
+        public string Name { get; }
 
         /// <summary>
         /// Performs an equality check between two object instances.
@@ -47,10 +37,7 @@
         /// <param name="a">Instance a.</param>
         /// <param name="b">Instance b.</param>
         /// <returns>True if the instances are equal; otherwise, false.</returns>
-        public static bool operator ==(Enumeration a, Enumeration b)
-        {
-            return Equals(a, b);
-        }
+        public static bool operator ==(Enumeration a, Enumeration b) => Equals(a, b);
 
         /// <summary>
         /// Performs an inequality check between two object instances.
@@ -58,10 +45,7 @@
         /// <param name="a">Instance a.</param>
         /// <param name="b">Instance b.</param>
         /// <returns>True if the instances are not equal; otherwise, false.</returns>
-        public static bool operator !=(Enumeration a, Enumeration b)
-        {
-            return !Equals(a, b);
-        }
+        public static bool operator !=(Enumeration a, Enumeration b) => !Equals(a, b);
 
         /// <summary>
         /// Gets all of the publicly visible enumeration members for a given enumeration type.
@@ -83,7 +67,7 @@
         /// <returns>A collection of enumeration names.</returns>
         public static IEnumerable<string> GetNames<TEnum>() where TEnum : Enumeration
         {
-            return GetMembers<TEnum>().Select(enumeration => enumeration.name);
+            return GetMembers<TEnum>().Select(enumeration => enumeration.Name);
         }
 
         /// <summary>
@@ -94,7 +78,7 @@
         /// <returns>The name of the given enumeration.</returns>
         public static string GetName<TEnum>(int value) where TEnum : Enumeration
         {
-            return GetMembers<TEnum>().SingleOrDefault(enumeration => enumeration.value == value)?.name;
+            return GetMembers<TEnum>().SingleOrDefault(enumeration => enumeration.Value == value)?.Name;
         }
 
         /// <summary>
@@ -104,7 +88,7 @@
         /// <returns>A collection of enumeration values.</returns>
         public static IEnumerable<int> GetValues<TEnum>() where TEnum : Enumeration
         {
-            return GetMembers<TEnum>().Select(enumeration => enumeration.value);
+            return GetMembers<TEnum>().Select(enumeration => enumeration.Value);
         }
 
         /// <summary>
@@ -115,7 +99,7 @@
         /// <returns>The value of the given enumeration.</returns>
         public static int GetValue<TEnum>(string name) where TEnum : Enumeration
         {
-            return GetMembers<TEnum>().SingleOrDefault(enumeration => enumeration.name == name)?.value ?? default;
+            return GetMembers<TEnum>().SingleOrDefault(enumeration => enumeration.Name == name)?.Value ?? default;
         }
 
         /// <summary>
@@ -126,7 +110,7 @@
         /// <returns>True if the value is defined by the enumeration; otherwise, false.</returns>
         public static bool IsDefined<TEnum>(int value) where TEnum : Enumeration
         {
-            return GetMembers<TEnum>().Any(enumeration => enumeration.value == value);
+            return GetMembers<TEnum>().Any(enumeration => enumeration.Value == value);
         }
 
         /// <summary>
@@ -137,7 +121,7 @@
         /// <returns>True if the name is defined by the enumeration; otherwise, false.</returns>
         public static bool IsDefined<TEnum>(string name) where TEnum : Enumeration
         {
-            return GetMembers<TEnum>().Any(enumeration => enumeration.name == name);
+            return GetMembers<TEnum>().Any(enumeration => enumeration.Name == name);
         }
 
         /// <summary>
@@ -148,7 +132,7 @@
         /// <returns>An enumeration instance if one exists for the specified value; otherwise, false.</returns>
         public static TEnum Parse<TEnum>(int value) where TEnum : Enumeration
         {
-            return GetMembers<TEnum>().SingleOrDefault(enumeration => enumeration.value == value);
+            return GetMembers<TEnum>().SingleOrDefault(enumeration => enumeration.Value == value);
         }
 
         /// <summary>
@@ -159,7 +143,7 @@
         /// <returns>An enumeration instance if one exists for the specified name; otherwise, false.</returns>
         public static TEnum Parse<TEnum>(string name) where TEnum : Enumeration
         {
-            return GetMembers<TEnum>().SingleOrDefault(enumeration => enumeration.name == name);
+            return GetMembers<TEnum>().SingleOrDefault(enumeration => enumeration.Name == name);
         }
 
         /// <summary>
@@ -189,51 +173,6 @@
         }
 
         /// <summary>
-        /// Compares the current instance with another object of the same type and returns 
-        /// an integer that indicates whether the current instance precedes, follows, or 
-        /// occurs in the same position in the sort order as the other object.
-        /// </summary>
-        /// <param name="obj">An object to compare with this instance.</param>
-        /// <returns>
-        /// A value that indicates the relative order of the objects being compared. 
-        /// The return value has these meanings: Value Meaning Less than zero This instance precedes obj in the sort order. 
-        /// Zero This instance occurs in the same position in the sort order as obj. Greater than zero This instance follows obj in the sort order.
-        /// </returns>
-        /// <exception cref="ArgumentException">Thrown when the obj argument is not the same type as this instance.</exception>
-        public int CompareTo(object obj)
-        {
-            Enumeration enumeration = obj as Enumeration;
-
-            if (obj is null)
-            {
-                return 1;
-            }
-
-            if (enumeration is null)
-            {
-                throw new ArgumentException($"Object is not of type {nameof(Enumeration)}");
-            }
-
-            return value.CompareTo(enumeration.value);
-        }
-
-        /// <summary>
-        /// Compares the current instance with another object of the same type and returns 
-        /// an integer that indicates whether the current instance precedes, follows, or 
-        /// occurs in the same position in the sort order as the other object.
-        /// </summary>
-        /// <param name="other">An object to compare with this instance.</param>
-        /// <returns>
-        /// A value that indicates the relative order of the objects being compared. 
-        /// The return value has these meanings: Value Meaning Less than zero This instance precedes obj in the sort order. 
-        /// Zero This instance occurs in the same position in the sort order as obj. Greater than zero This instance follows obj in the sort order.
-        /// </returns>
-        public int CompareTo(Enumeration other)
-        {
-            return ReferenceEquals(other, null) ? 1 : value.CompareTo(other.value);
-        }
-
-        /// <summary>
         /// Checks for equality between this instance and another object.
         /// </summary>
         /// <param name="obj">The object to check for equality.</param>
@@ -253,26 +192,20 @@
         public bool Equals(Enumeration other)
         {
             return !(other is null)
-                && value == other.value
-                && name == other.name;
+                && Value == other.Value
+                && Name == other.Name;
         }
 
         /// <summary>
         /// Serves as a hash code function for this instance.
         /// </summary>
         /// <returns>A hash code for this instance.</returns>
-        public override int GetHashCode()
-        {
-            return value.GetHashCode();
-        }
+        public override int GetHashCode() => HashCode.GetHashCode(Name, Value);
 
         /// <summary>
         /// Returns a string that represents the current object.
         /// </summary>
         /// <returns>A string that represents the current object.</returns>
-        public override string ToString()
-        {
-            return name;
-        }
+        public override string ToString() => Name;
     }
 }

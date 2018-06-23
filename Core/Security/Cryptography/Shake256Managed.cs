@@ -13,18 +13,12 @@
         /// <summary>
         /// Creates a new instance of the <see cref="Shake256Managed"/> class.
         /// </summary>
-        public Shake256Managed(int outputLength)
-        {
-            sponge = new KeccakSpongeManaged(136, 64, KeccakSpongeManaged.ShakeDelimiter, outputLength);
-        }
+        public Shake256Managed(int outputLength) => sponge = new KeccakSpongeManaged(136, 64, KeccakSpongeManaged.ShakeDelimiter, outputLength);
 
         /// <summary>
         /// Initializes an implementation of the <see cref="Shake256Managed"/> class.
         /// </summary>
-        public override void Initialize()
-        {
-            sponge.Initialize();
-        }
+        public override void Initialize() => sponge.Initialize();
 
         /// <summary>
         /// Routes data written to the object into the hash algorithm for computing the hash.
@@ -42,9 +36,6 @@
         /// Finalizes the hash computation after the last data is processed by the cryptographic stream object.
         /// </summary>
         /// <returns>The computed hash code.</returns>
-        protected override byte[] HashFinal()
-        {
-            return sponge.Squeeze();
-        }
+        protected override byte[] HashFinal() => sponge.Squeeze();
     }
 }

@@ -294,6 +294,6 @@
         /// <param name="y">The value to rotate by.</param>
         /// <returns>A logically rotated 64-bit integer.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private ulong Rotl64(ulong x, byte y) => (x << y) | (x >> (64 - y));
+        private static ulong Rotl64(ulong x, byte y) => (x << y) | (x >> (64 - y));
     }
 }
