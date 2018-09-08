@@ -7,7 +7,7 @@
     public sealed class NullityValidatorTests
     {
         [Fact]
-        public void NullityValidatorReturnsTrueForNullReference()
+        public void NullityValidtorReturnsTrueForNullReference()
         {
             // Arrange
             Validator<object> validator = new NullityValidator<object>();

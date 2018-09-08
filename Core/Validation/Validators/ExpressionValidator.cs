@@ -3,7 +3,7 @@
     using System;
     using System.Linq.Expressions;
 
-    public sealed class ExpressionValidator<T> : Validator<T>
+    public class ExpressionValidator<T> : Validator<T>
     {
         private readonly Expression<Func<T, bool>> expression;
 

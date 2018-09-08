@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.Linq;
 
     /// <summary>
     /// Provides extension methods for <see cref="IEnumerable{T}" />.
@@ -10,6 +11,11 @@
     [EditorBrowsable(EditorBrowsableState.Never)]
     public static class IEnumerableExtensions
     {
+        public static bool ContainsAll<T>(this IEnumerable<T> enumerable, IEnumerable<T> items)
+        {
+            return !items.Except(enumerable).Any();
+        }
+
         /// <summary>
         /// Performs the specified action on each element of the <see cref="IEnumerable{T}"/>.
         /// </summary>

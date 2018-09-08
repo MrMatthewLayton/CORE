@@ -1,7 +1,9 @@
 ﻿namespace Core.Validation.Validators
 {
-    public sealed class NullityValidator<T> : Validator<T>
+    public sealed class NullityValidator<T> : ExpressionValidator<T>
     {
-        public override bool IsValid(T value) => value == null;
+        public NullityValidator() : base(other => other == null)
+        {
+        }
     }
 }
