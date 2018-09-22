@@ -11,6 +11,13 @@
     [EditorBrowsable(EditorBrowsableState.Never)]
     public static class IEnumerableExtensions
     {
+        /// <summary>
+        /// Determines whether this <see cref="IEnumerable{T}"/> instance contains all of the items in the other <see cref="IEnumerable{T}"/> instance.
+        /// </summary>
+        /// <typeparam name="T">The underlying type for the <see cref="IEnumerable{T}"/>.</typeparam>
+        /// <param name="enumerable">The <see cref="IEnumerable{T}"/> upon which to search for items.</param>
+        /// <param name="items">The <see cref="IEnumerable{T}"/> instance of items that will be searched for.</param>
+        /// <returns>True if the items are contained in this <see cref="IEnumerable{T}"/> instance; otherwise, false.</returns>
         public static bool ContainsAll<T>(this IEnumerable<T> enumerable, IEnumerable<T> items)
         {
             return !items.Except(enumerable).Any();
