@@ -1,6 +1,7 @@
 ﻿namespace Core
 {
     using System.ComponentModel;
+    using System.Globalization;
     using System.Text;
 
     /// <summary>
@@ -23,5 +24,21 @@
         /// <param name="value">The encoding to use for conversion.</param>
         /// <returns>A byte array representation of this string.</returns>
         public static byte[] ToByteArray(this string value) => value.ToByteArray(Encoding.Default);
+
+        /// <summary>
+        /// Formats this instance to a title case string.
+        /// </summary>
+        /// <param name="value">The value to format.</param>
+        /// <param name="cultureInfo">The culture info to use for formatting.</param>
+        /// <returns>A title case representation of the current instance.</returns>
+        public static string ToTitleCase(this string value, CultureInfo cultureInfo = null)
+        {
+            if (cultureInfo == null)
+            {
+                cultureInfo = CultureInfo.CurrentCulture;
+            }
+
+            return cultureInfo.TextInfo.ToTitleCase(value.ToLower());
+        }
     }
 }
