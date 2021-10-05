@@ -1,7 +1,4 @@
-<img src="https://raw.githubusercontent.com/series0ne/CORE/master/Icon/Icon_With_Text.png" height="64" alt="CORE" />
+# THIS REPOSITORY IS NO LONGER MAINTAINED!
 
-### A modern, general purpose library for .NET
+**Some of the APIs have been moved and are actively maintained by ONIXLabs: https://github.com/onix-labs/onixlabs-dotnet**
 
-CORE stands for **C**ommon **O**bject **R**untime **E**xtension. It is designed to complement .NET with (even more), modern, general purpose APIs. The primary objective of CORE development is to identify commonly used enterprise patterns and practices, and to provide a baseline implementation, such that these patterns and practices can become aligned across enterprises.
-
-https://www.nuget.org/packages/SeriesOne.CORE/
